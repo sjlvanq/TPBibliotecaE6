@@ -1,3 +1,5 @@
+using TPBibliotecaE6.Models;
+
 namespace TPBibliotecaE6
 {
     internal static class Program
@@ -11,7 +13,8 @@ namespace TPBibliotecaE6
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new Form1());
+            Biblioteca biblioteca = new Biblioteca();
+            Application.Run(new Form1(biblioteca));
         }
     }
 }
