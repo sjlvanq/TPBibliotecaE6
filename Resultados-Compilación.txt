@@ -1,0 +1,6 @@
+﻿Compilación iniciada a las 18:08...
+1>------ Operación Compilar iniciada: Proyecto: TPBibliotecaE6, configuración: Debug Any CPU ------
+1>  Omitiendo analizadores para acelerar la compilación. Puede ejecutar los comandos "Build" o "Rebuild" para ejecutar los analizadores.
+1>  TPBibliotecaE6 -> C:\Users\BeluLepore\source\repos\Tp BiblotecaBELen\bin\Debug\net10.0-windows\TPBibliotecaE6.dll
+========== Compilación: 1 correcto, 0 erróneo, 0 actualizado, 0 omitido ==========
+========== Compilar completado a las 18:08 y tardó 03,743 segundos ==========
