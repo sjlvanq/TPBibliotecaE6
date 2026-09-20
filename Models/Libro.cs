@@ -1,4 +1,9 @@
-﻿namespace TPBibliotecaE6.Models
+﻿/*-----------------------------------------------------------------------------------------------
+* 
+* DANIEL
+*  
+-----------------------------------------------------------------------------------------------*/
+namespace TPBibliotecaE6.Models
 {
     public class Libro
     {
@@ -17,7 +22,7 @@
         }
         public override string ToString()
         {
-            return "Titulo: " + titulo + " Autor: " + autor + " Editorial:" + editorial;
+            return "Título: " + titulo + " / Autor: " + autor + " / Editorial:" + editorial;
     }
     }
 }
