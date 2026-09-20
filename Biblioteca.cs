@@ -3,10 +3,10 @@
 * SILVANO
 *  
 -----------------------------------------------------------------------------------------------*/
-namespace TPBibliotecaE6.Models
+namespace TPBibliotecaE6
 
 {
-    public class Biblioteca
+    internal class Biblioteca
     {
         private List<Libro> libros;
         private List<Lector> lectores;

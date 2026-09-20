@@ -4,7 +4,6 @@
 *  
 -----------------------------------------------------------------------------------------------*/
 
-using TPBibliotecaE6.Models;
 namespace TPBibliotecaE6
 {
     internal static class Program

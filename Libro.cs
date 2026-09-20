@@ -3,9 +3,9 @@
 * DANIEL
 *  
 -----------------------------------------------------------------------------------------------*/
-namespace TPBibliotecaE6.Models
+namespace TPBibliotecaE6
 {
-    public class Libro
+    internal class Libro
     {
         private string titulo;
         private string autor;

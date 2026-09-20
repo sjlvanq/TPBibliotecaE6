@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
-namespace TPBibliotecaE6.Models
+namespace TPBibliotecaE6
 {
 /*-----------------------------------------------------------------------------------------------
  * 
  * BELEN
  *  
  -----------------------------------------------------------------------------------------------*/
-    public class Lector
+    internal class Lector
     {
         private string nombre;
         private string dni;
