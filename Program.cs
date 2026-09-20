@@ -3,97 +3,65 @@
 * SILVANO
 *  
 -----------------------------------------------------------------------------------------------*/
-
 namespace TPBibliotecaE6
 {
-    internal static class Program
+    internal class Test
     {
-        static void Main()
+        static void Main(string[] args)
         {
             Biblioteca biblioteca = new Biblioteca();
-            Console.WriteLine("------------------------------------------------------------------");
-            Console.WriteLine("* TP BIBLIOTECA                                                  *");
-            Console.WriteLine("* Programa iniciado correctamente.                               *");
-            Console.WriteLine("* Casos de Prueba.                                               *");
-            Console.WriteLine("------------------------------------------------------------------");
-            bool resultado;
-
-            Console.WriteLine("\nINTENTOS DE AGREGADO LIBRO");
-            Console.WriteLine("------------------------------------------------------------------");
-            //Agrego Libro nuevo
-            resultado = biblioteca.agregarLibro("Lestat el vampiro","Anne Rice","Zeta");
-            Console.WriteLine("Libro agregado: " + resultado);
-            
-            //Intento agregar mismo Libro
-            resultado = biblioteca.agregarLibro("Lestat el vampiro","Anne Rice","Zeta");
-            Console.WriteLine("Mismo libro agregado nuevamente: " + resultado);
-
-            Console.WriteLine("\nINTENTOS DE AGREGADO LECTOR");
-            Console.WriteLine("------------------------------------------------------------------");
-            //Agrego Lector
-            resultado = biblioteca.altaLector("Juan Manuel Rojas", "28860452");
-            Console.WriteLine("Lector agregado: " + resultado);
-
-            //Intento agregar mismo Lector (DNI)
-            resultado = biblioteca.altaLector("Silvano", "28860452");
-            Console.WriteLine("Lector con mismo DNI agregado nuevamente: " + resultado);
-            
-            //Agrego libros
-            biblioteca.agregarLibro("Menoch el demonio", "Anne Rice", "Zeta");
-            biblioteca.agregarLibro("Sangre y Oro", "Anne Rice", "Zeta");
-            biblioteca.agregarLibro("El ladrón de cuerpos", "Anne Rice", "Zeta");
-            biblioteca.agregarLibro("Entrevista con el vampiro", "Anne Rice", "Zeta");
-            biblioteca.agregarLibro("Pandora", "Anne Rice", "Zeta");
-            biblioteca.agregarLibro("La comunidad de la sangre", "Anne Rice", "Zeta");
-
-            Console.WriteLine("\nINTENTOS DE PRÉSTAMOS");
-            Console.WriteLine("------------------------------------------------------------------");
-            string prestamo;
-
-            //Préstamo Falla LIBRO INEXISTENTE
-            prestamo = biblioteca.prestarLibro("La reina de los condenados", "28860452");
-            Console.WriteLine("Intento de Préstamo: " + prestamo);
-
-            //Préstamo Falla LECTOR INEXISTENTE
-            prestamo = biblioteca.prestarLibro("Entrevista con el vampiro", "66666666");
-            Console.WriteLine("\nIntento de Préstamo: " + prestamo);
-
-            // Primer préstamo PRÉSTAMO EXITOSO
-            prestamo = biblioteca.prestarLibro("Lestat el vampiro", "28860452");
-            Console.WriteLine("\nIntento de Préstamo 1: " + prestamo);
-
-            // Segundo préstamo PRÉSTAMO EXITOSO
-            prestamo = biblioteca.prestarLibro("Menoch el demonio", "28860452");
-            Console.WriteLine("Intento de Préstamo 2: " + prestamo);
-
-            // Tercer préstamo PRÉSTAMO EXITOSO
-            prestamo = biblioteca.prestarLibro("Sangre y Oro", "28860452");
-            Console.WriteLine("Intento de Préstamo 3: " + prestamo);
-
-            // Intento cuarto préstamo TOPE DE PRÉSTAMO ALCANZADO
-            prestamo = biblioteca.prestarLibro("El ladrón de cuerpos", "28860452");
-            Console.WriteLine("\nIntento de Préstamo 4: " + prestamo);
-
-            // Listo los libros disponibles
-            Console.WriteLine("\nLISTAR LIBROS DISPONIBLES:");
-            Console.WriteLine("-----------------------");
+            cargarLibros(10);
+            cargarLibros(2);
+            biblioteca.listarLibros();
+            biblioteca.eliminarLibro("Libro 2");
             biblioteca.listarLibros();
 
-            // Elimino un libro
-            Console.WriteLine("\nLIBRO ELIMINADO:");
-            Console.WriteLine("-----------------------");
-            resultado = biblioteca.eliminarLibro("El ladrón de cuerpos");
-            Console.WriteLine("Título: El ladrón de cuerpos");
-            Console.WriteLine("Libro eliminado: " + resultado);
+            Console.WriteLine("--------------------------------");
 
+            cargarLectores(10);
+            cargarLectores(2);
+            //biblioteca.listarLectores(); // No requerido; no implementado
+            prestarLibro("DNI0", "LIBRO_INEXISTENTE"); // Output esperado: "LIBRO INEXISTENTE"
+            prestarLibro("DNI_LECTOR_INEXISTENTE", "Libro 1"); // Output esperado: "LECTOR INEXISTENTE"
+            prestarLibro("DNI0", "Libro 1"); // Output esperado: "PRESTAMO REALIZADO CON ÉXITO"
+            // Libro 2 eliminado en línea 15
+            prestarLibro("DNI0", "Libro 3"); // Output esperado: "PRESTAMO REALIZADO CON ÉXITO"
+            prestarLibro("DNI0", "Libro 4"); // Output esperado: "PRESTAMO REALIZADO CON ÉXITO"
+            prestarLibro("DNI0", "Libro 5"); // Output esperado: "TOPE DE PRÉSTAMOS ALCANZADO"
 
+            void cargarLibros(int cantidad)
+            {
+                // Copiado literal de la bibliografía
+                bool pude;
+                for (int i = 0; i < cantidad; i++)
+                {
+                    pude = biblioteca.agregarLibro("Libro " + i, "Autor " + i, "Editorial " + i);
+                    if (pude)
+                        Console.WriteLine("libro " + i + " agregado correctamente.");
+                    else
+                        Console.WriteLine("libro " + i + " ya existe en la biblioteca.");
+                }
+            }
 
-            // Vuelvo a listar para comprobar que se eliminó
-            Console.WriteLine("\nLISTAR LIBROS DESPUÉS DE ELIMINAR:");
-            Console.WriteLine("-----------------------");
-            biblioteca.listarLibros();
+            void cargarLectores(int cantidad)
+            {
+                bool pude;
+                for (int i = 0; i < cantidad; i++)
+                {
+                    pude = biblioteca.altaLector("Nombre " + i, "DNI" + i);
+                    if (pude)
+                        Console.WriteLine("lector " + i + " agregado correctamente.");
+                    else
+                        Console.WriteLine("lector " + i + " ya existe en la biblioteca.");
+                }
+            }
 
-            Console.ReadKey();
+            void prestarLibro(string dni, string titulo)
+            {
+                string resultado;
+                resultado = biblioteca.prestarLibro(dni, titulo);
+                Console.WriteLine(resultado);
+            }
         }
     }
 }

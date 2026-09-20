@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-namespace TPBibliotecaE6
+﻿namespace TPBibliotecaE6
 {
 /*-----------------------------------------------------------------------------------------------
  * 
