@@ -4,16 +4,27 @@ using System.Text;
 
 namespace TPBibliotecaE6.Models
 {
-    public class Libro
+    internal class Libro
     {
-        //private int id;
         private string titulo;
-        public Libro(string titulo) {
+        private string autor;
+        private string editorial;
+
+        public Libro(string titulo, string autor, string editorial)
+        {
             this.titulo = titulo;
+            this.autor = autor;
+            this.editorial = editorial;
         }
+
+        public string getTitulo()
+        {
+            return titulo;
+        }
+
         public override string ToString()
         {
-            return this.titulo;
+            return "Titulo: " + titulo + " Autor: " + autor + " Editorial: " + editorial;
         }
     }
 }
