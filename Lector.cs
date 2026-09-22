@@ -28,14 +28,23 @@
          *  
          -----------------------------------------------------------------------------------------------*/
 
-        public bool agregarPrestamo(Libro libro)
+        public int agregarPrestamo(Libro libro)
         {
-            if (prestamos.Count < 3)
+            /*
+             * 0: Prestamo agregado correctamente
+             * 1: Libro inexistente
+             * 2: Límite de préstamos alcanzado
+             */
+            if ( libro == null)
             {
-                prestamos.Add(libro);
-                return true;
+                return 1;
             }
-            return false;
+            if (prestamos.Count >= 3)
+            {
+                return 2;
+            }
+            prestamos.Add(libro);
+            return 0;
         }
     }
 }

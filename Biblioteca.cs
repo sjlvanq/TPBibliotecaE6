@@ -99,26 +99,27 @@ namespace TPBibliotecaE6
          * PAULA
          *  
          -----------------------------------------------------------------------------------------------*/
-        public string prestarLibro(string titulo, string dni)
+        public string prestarLibro(string dni, string titulo)
         {
-            Libro libro = buscarLibro(titulo);
             Lector lector = buscarLectorRegistrado(dni);
-
             if (lector == null)
             {
                 return "LECTOR INEXISTENTE";
             }
-            if (libro == null)
+            Libro libro = buscarLibro(titulo);
+            int resultado_prestamo = lector.agregarPrestamo(libro);
+            switch (resultado_prestamo)
             {
-                return "LIBRO INEXISTENTE";
+                case 0:
+                    libros.Remove(libro);
+                    return "PRESTAMO EXITOSO";
+                case 1:
+                    return "TOPE DE PRESTAMO ALCANZADO";
+                case 2:
+                    return "LIBRO INEXISTENTE";
+                default:
+                    return "ERROR DESCONOCIDO";
             }
-            if (!lector.agregarPrestamo(libro))
-            {
-                return "TOPE DE PRESTAMO ALCANZADO";
-            }
-
-            libros.Remove(libro);
-            return "PRESTAMO EXITOSO";
         }
 
     }
