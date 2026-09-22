@@ -114,9 +114,9 @@ namespace TPBibliotecaE6
                     libros.Remove(libro);
                     return "PRESTAMO EXITOSO";
                 case 1:
-                    return "TOPE DE PRESTAMO ALCANZADO";
-                case 2:
                     return "LIBRO INEXISTENTE";
+                case 2:
+                    return "TOPE DE PRESTAMO ALCANZADO";
                 default:
                     return "ERROR DESCONOCIDO";
             }
